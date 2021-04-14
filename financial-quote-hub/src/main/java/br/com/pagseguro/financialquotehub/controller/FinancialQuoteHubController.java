@@ -50,7 +50,7 @@ import br.com.pagseguro.financialquotehub.service.StockService;
 public class FinancialQuoteHubController {
 
 	@Autowired
-	StockService stockService;
+	StockService stockService; 
 
 	@Autowired
 	DataMapper dataMapper;

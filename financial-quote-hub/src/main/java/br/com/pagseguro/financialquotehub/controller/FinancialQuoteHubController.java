@@ -71,7 +71,7 @@ public class FinancialQuoteHubController {
 		}
 	}
 
-	@GetMapping("/stock/code/{code}")
+	@GetMapping("/stocks/code/{code}")
 	public ResponseEntity<Stock> getStockByCode(@PathVariable(value = "code") String code) {
 		Stock stock = stockService.getByCode(code);
 		if (stock == null) {
@@ -81,7 +81,7 @@ public class FinancialQuoteHubController {
 		}
 	}
 
-	@GetMapping("/stock/name/{name}")
+	@GetMapping("/stocks/name/{name}")
 	public ResponseEntity<Stock> getStockByName(@PathVariable(value = "name") String name) {
 		Stock stock = stockService.getByName(name);
 		if (stock == null) {
@@ -151,7 +151,7 @@ public class FinancialQuoteHubController {
 		return dataMapper.jsonToSymbolWrapper(response.body());
 	}
 
-	@PostMapping("/stock")
+	@PostMapping("/stocks")
 	public ResponseEntity<StockResponseDTO> createStock(@Valid @RequestBody StockRequestDTO stockRequestDTO) {
 		Stock entity = dataMapper.mapTo(stockRequestDTO, Stock.class);
 		Stock foundObj = stockService.getByCode(entity.getCode());
@@ -167,7 +167,7 @@ public class FinancialQuoteHubController {
 		}
 	}
 
-	@DeleteMapping("/stock/{code}")
+	@DeleteMapping("/stocks/{code}")
 	public ResponseEntity<StockResponseDTO> deleteStock(@PathVariable(value = "code") String code) {
 		Stock foundObj = stockService.getByCode(code);
 		if (foundObj != null) {
